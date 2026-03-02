@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>First Stand 2026</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ✅ Ajout du vrai parser CSV -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+
+<body>
+    <div class="match-bar">
+
+    <!-- MATCH EN COURS -->
+    <div class="match live-match">
+        <div class="match-status live">🔴 Match en cours</div>
+        <div class="match-content">
+            <div class="team">
+                <img src="Image/GENG.webp" alt="GENG">
+                <span>GENG</span>
+            </div>
+
+            <div class="score">
+                <span id="score1">1</span>
+                <span class="dash">-</span>
+                <span id="score2">2</span>
+            </div>
+
+            <div class="team">
+                <span>G2</span>
+                <img src="Image/G2.webp" alt="G2">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- PROCHAIN MATCH -->
+    <div class="match upcoming-match">
+        <div class="match-status upcoming">🟢 Prochain match</div>
+        <div class="match-content">
+            <div class="team">
+                <img src="Image/FEARX.webp" alt="FEARX">
+                <span>FEARX</span>
+            </div>
+
+            <div class="vs">VS</div>
+
+            <div class="team">
+                <span>LOUD</span>
+                <img src="Image/LOUD.webp" alt="LOUD">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<nav>
+    <button class="tab-btn active" data-page="champions">Champions</button>
+    <button class="tab-btn" data-page="joueur">Joueurs</button>
+    <button class="tab-btn" data-page="paris">Paris</button>
+</nav>
+
+<!-- ===================== -->
+<!-- PAGE JOUEURS -->
+<!-- ===================== -->
+<div id="joueur" class="page active">
+    <div class="dashboard">
+
+        <div class="leaderboard">
+            <h2 class="collapsible">📈 Meilleur KDA</h2>
+            <div class="content">
+                <div id="podiumKDA" class="podium-container"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rang</th>
+                            <th>Equipe</th>
+                            <th>Joueur</th>
+                            <th>KDA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableKDA"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h2 class="collapsible">⚔️ Le plus de Kills</h2>
+            <div class="content">
+                <div id="podiumKills" class="podium-container"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rang</th>
+                            <th>Equipe</th>
+                            <th>Joueur</th>
+                            <th>Kills</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableKills"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+    <h2 class="collapsible">➕ Champions différents joués</h2>
+    <div class="content">
+        <div id="podiumChampDiff" class="podium-container"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rang</th>
+                    <th>Equipe</th>
+                    <th>Joueur</th>
+                    <th>Champions</th>
+                </tr>
+            </thead>
+            <tbody id="tableChampDiff"></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="leaderboard">
+    <h2 class="collapsible">🩸 First Blood</h2>
+    <div class="content">
+        <div id="podiumFirstBlood" class="podium-container"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rang</th>
+                    <th>Equipe</th>
+                    <th>Joueur</th>
+                    <th>First Blood</th>
+                </tr>
+            </thead>
+            <tbody id="tableFirstBlood"></tbody>
+        </table>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<!-- ===================== -->
+<!-- PAGE CHAMPIONS -->
+<!-- ===================== -->
+<div id="champions" class="page">
+    <div class="dashboard">
+
+        <div class="leaderboard">
+            <h2>📈 Meilleur winrate</h2>
+            <div id="podiumWinrate" class="podium-container"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rang</th>
+                        <th>Champion</th>
+                        <th>Winrate</th>
+                    </tr>
+                </thead>
+                <tbody id="tableWinrate"></tbody>
+            </table>
+        </div>
+         <div class="leaderboard">
+    <h2>📉 Pire Winrate</h2>
+    <div id="podiumWorstWinrate" class="podium-container"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rang</th>
+                <th>Champion</th>
+                <th>Winrate</th>
+            </tr>
+        </thead>
+        <tbody id="tableWorstWinrate"></tbody>
+    </table>
+</div>
+
+        <div class="leaderboard">
+            <h2>✅ Plus de Pick</h2>
+            <div id="podiumPicked" class="podium-container"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rang</th>
+                        <th>Champion</th>
+                        
+                        <th>Picks</th>
+                    </tr>
+                </thead>
+                <tbody id="tablePicked"></tbody>
+            </table>
+        </div>
+
+
+<div class="leaderboard">
+    <h2>🚫 Plus Banni</h2>
+    <div id="podiumMostBanned" class="podium-container"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rang</th>
+                <th>Champion</th>
+                <th>Bans</th>
+            </tr>
+        </thead>
+        <tbody id="tableMostBanned"></tbody>
+    </table>
+</div>
+
+    </div>
+</div>
+
+<!-- ===================== -->
+<!-- PAGE PARIS -->
+<!-- ===================== -->
+<div id="paris" class="page">
+    <div id="parisPodium" class="paris-podium"></div>
+    <canvas id="scoreChart"></canvas>
+
+    <div class="leaderboard">
+        <h2>🎯 Paris</h2>
+        <table class="paris-table">
+            <thead id="parisHead"></thead>
+            <tbody id="parisBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Ton script principal DOIT être après PapaParse -->
+<script src="script.js"></script>
+<div id="parisPodium" class="paris-podium"></div>
+<canvas id="scoreChart"></canvas>
+<audio id="winMusic" src="Musique/BO5.mp3" preload="auto"></audio>
+</body>
+</html>
