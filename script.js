@@ -111,7 +111,7 @@ function renderLeaderboard(data, key, podiumId, tableId, type, reverse = false) 
         .filter(x => x)
         .map(p => `
         <div class="medal ${p === top3[0] ? 'gold' : ''}">
-            <img src="images/${p.name}.webp" onerror="this.src='imagess/default.webp'">
+            <img src="images/${p.name}.webp" onerror="this.src='images/default.webp'">
             <div class="name">${p.name}</div>
             <div class="value">${p[key]}${key === 'winrate' ? '%' : ''}</div>
         </div>
@@ -303,3 +303,4 @@ setInterval(() => {
 loadData();
 
 setInterval(loadData, 60000); // rafraîchissement chaque minute
+
